@@ -29,7 +29,7 @@
   --color-field-bg:    #ffffff80;
   --color-done-text:   #b3aebd;
 
-  /* -- hero/greeting bold -- */
+  /* -- hero/greeting: the one deliberately bold, contrasting block -- */
   --color-hero-bg:     #1c1a22;
   --color-hero-text:   #fdfcff;
 
@@ -258,9 +258,9 @@ main > .card:last-child,
 }
 
 .greeting__time {
-  font-family: var(--font-display);
-  font-size: 2.9rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 2.7rem;
+  font-weight: 700;
   letter-spacing: -1px;
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
