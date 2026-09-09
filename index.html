@@ -1,11 +1,108 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List Life</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Do List Life</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+
+  <div class="app">
+
+    <!-- topbar: brand dan dark mode toggle (floats top-right on mobile only) -->
+    <header class="topbar">
+      <div class="topbar__brand">
+        <span class="topbar__mark" aria-hidden="true"></span>
+        To Do List Life
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <main>
+
+      <!-- greeting -->
+      <section class="card card--greeting" aria-label="Greeting">
+        <div class="greeting__eyebrow">Today</div>
+        <div class="greeting__time" id="greetingTime">00:00:00</div>
+        <div class="greeting__date" id="greetingDate">Loading date...</div>
+        <div class="greeting__text" id="greetingText">Hello</div>
+      </section>
+
+      <div class="grid">
+
+        <!-- focus timer -->
+        <section class="card card--timer" aria-label="Focus timer">
+          <h2 class="card__title">Focus Timer</h2>
+
+          <div class="timer__ring-wrap">
+            <svg class="timer__ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="timer__ring-track" cx="60" cy="60" r="52"></circle>
+              <circle class="timer__ring-progress" id="timerRingProgress" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="timer__display" id="timerDisplay">25:00</div>
+          </div>
+
+          <div class="timer__controls">
+            <button class="btn btn--primary" id="timerStart" type="button">Start</button>
+            <button class="btn btn--muted" id="timerStop" type="button">Stop</button>
+            <button class="btn btn--muted" id="timerReset" type="button">Reset</button>
+          </div>
+        </section>
+
+        <!-- tasks -->
+        <section class="card card--tasks" aria-label="Tasks">
+          <div class="card__title-row">
+            <h2 class="card__title">Tasks</h2>
+            <span class="tasks__progress-label" id="tasksProgressLabel">0 of 0 done</span>
+          </div>
+
+          <div class="tasks__progress-bar">
+            <div class="tasks__progress-fill" id="tasksProgressFill"></div>
+          </div>
+
+          <form class="task-form" id="taskForm" novalidate>
+            <input
+              class="input"
+              type="text"
+              id="taskInput"
+              placeholder="Add a new task..."
+              autocomplete="off"
+              maxlength="200"
+              aria-label="New task"
+              required
+            />
+            <button class="btn btn--primary" type="submit">Add</button>
+          </form>
+          <div class="task-list" id="taskList" aria-live="polite"></div>
+          <p class="empty-state" id="emptyState" hidden>No tasks yet. Add one above!</p>
+        </section>
+
+      </div>
+
+      <!-- quick links -->
+      <section class="card card--links" aria-label="Quick links">
+        <h2 class="card__title">Quick Links</h2>
+        <form class="link-form" id="linkForm" novalidate>
+          <input class="input" type="text" id="linkNameInput" placeholder="Link name" maxlength="30" required />
+          <input class="input" type="url" id="linkUrlInput" placeholder="URL" required />
+          <button class="btn btn--primary" type="submit">Add Link</button>
+        </form>
+        <div class="link-list" id="linkList"></div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
